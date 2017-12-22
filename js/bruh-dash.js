@@ -46,57 +46,111 @@ global.bruhdash = {
   
   // returns an array with all falsey values removed
   compact: function(arr) {
-     return arr.filter(Boolean);
+     return arr.filter(Boolean); //removes all false values via bool
   },
 
   // creates a slice of an array from the start index up to but not including the end index
-  slice: function () {
-
+  slice: function (arr, num1, num2) {
+return arr.slice(num1, num2);
   },
 
   // returns a slice of array with n elements dropped from the beignning
-  drop: function(){
-
+  drop: function(arr, val){
+    if (val === 0) {
+      return arr;
+    } else if (val === undefined) {
+      arr.shift();
+      return arr;
+    } else {
+  arr.splice(0, val);
+  return arr;
+    }
   },
 
   // returns a slice of array with n elements dropped from the end
-  dropRight: function() {
-
+  dropRight: function(arr, num) {
+    if (num === 0) {
+      return arr;
+    } else if (num === undefined) {
+      arr.pop();
+      return arr;
+    } else {
+  arr.splice(-2, num);
+  return arr;
+    }
   },
 
   // creates a slice of an array with n elements taken from the beginning
-  take: function () {
-
+  take: function (arr, num) {
+    if (num === 0) {
+     arr = [];
+     return arr;
+    } else if (num === undefined) {
+      return arr.splice(0,1);
+    } else {
+  return arr.splice(0, num);
+ 
+    }
   },
 
   // creates a slice of an array with n elements taken from the end
-  takeRight: function () {
-
+  takeRight: function (arr, num) {
+    if (num === 0) {
+      arr = [];
+      return arr;
+     } else if (num === undefined) {
+       return arr.splice(-1,1);
+     } else {
+   return arr.splice(-3, num);
+  
+     }
   },
 
   // fills elements of array with specified value from the start index
   // up to but not including the end index
-  fill: function() {
+  fill: function(arr, val, start, end) {
+if (start === undefined && end === undefined) {
+  return arr.fill(val);
+}  else { 
+  return arr.fill(val,start,end);
 
-  },
+}
+},
 
   // removes all given values from an array
-  pull: function () {
-
+  pull: function (arr, val) {
+ var findIndex = arr.indexOf(val);
+ for (var i=0 ; i<arr.length; i++) { 
+ arr.splice(findIndex,1);
+    }
+  return arr;
   },
 
   // removes elements of an array corresponding to the given indices
-  pullAt: function () {
-
+  pullAt: function (arr, ind) {
+  
+    var count = 0;
+    for (var i=0 ; i<ind.length; i++) { //looping over all elements of index
+     
+      var counter = ind[i]+ count;
+     arr.splice(counter, 1); //indexes num, 1 element
+     count--;
+       }
+       return arr;
+      
   },
 
   // creates an array excluding all the specified values
-  without: function() {
-
+  without: function(arr, val) {
+    var findIndex = arr.indexOf(val);
+    for (var i=0 ; i<arr.length; i++) { 
+    arr.splice(findIndex,1);
+       }
+     return arr;
   },
 
   // returns an array with specified values excluded
-  difference: function() {
+  difference: function(arr, val) {
 
   },
 
