@@ -127,14 +127,15 @@ if (start === undefined && end === undefined) {
   },
 
   // removes elements of an array corresponding to the given indices
-  pullAt: function (arr, ind) {
+ pullAt: function (arr, ind) {
   
     var count = 0;
     for (var i=0 ; i<ind.length; i++) { //looping over all elements of index
      
-      var counter = ind[i]+ count;
-     arr.splice(counter, 1); //indexes num, 1 element
-     count--;
+   //   var counter = ind[i]+ count;
+  //   arr.splice(counter, 1); //indexes num, 1 element
+  arr.slice(ind,1);
+   //  count--;
        }
        return arr;
       
