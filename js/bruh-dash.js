@@ -129,30 +129,37 @@ if (start === undefined && end === undefined) {
   // removes elements of an array corresponding to the given indices
  pullAt: function (arr, ind) {
   
-    var count = 0;
+  
     for (var i=0 ; i<ind.length; i++) { //looping over all elements of index
-     
-   //   var counter = ind[i]+ count;
-  //   arr.splice(counter, 1); //indexes num, 1 element
-  arr.slice(ind,1);
-   //  count--;
+      var indexNum =arr.indexOf(ind[i]) //FINDING in arr the index of indices, looping...
+      var find = (indexNum + 1); // in place
+  arr.splice(find, 1); //removing one arr in indices
+
        }
-       return arr;
+      return arr;
       
   },
 
   // creates an array excluding all the specified values
   without: function(arr, val) {
-    var findIndex = arr.indexOf(val);
-    for (var i=0 ; i<arr.length; i++) { 
+    
+    for (var i=0 ; i<val.length; i++) { 
+      var findIndex = arr.indexOf(val[i]);
     arr.splice(findIndex,1);
        }
      return arr;
   },
 
   // returns an array with specified values excluded
+  // .difference (array to inspect, values to exclude)
   difference: function(arr, val) {
-
+    for (var i=0 ; i<arr.length; i++) { 
+      var findIndex = arr.indexOf(val[i]);
+      console.log(i);
+    arr.splice(findIndex,1);
+    console.log(arr);
+       }
+     return arr;
   },
 
   /*******************
